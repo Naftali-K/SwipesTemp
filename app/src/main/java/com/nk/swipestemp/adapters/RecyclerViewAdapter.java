@@ -95,6 +95,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         notifyDataSetChanged();
     }
 
+    public void addItemList(List<Item> itemList) {
+        if (itemList == null) {
+            return;
+        }
+
+        int index = this.itemList.size();
+
+        this.itemList.addAll(itemList);
+        notifyItemInserted(index);
+    }
+
+
     public int getListPosition() {
         return listPosition;
     }

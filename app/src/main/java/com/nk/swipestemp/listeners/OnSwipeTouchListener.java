@@ -1,11 +1,14 @@
 package com.nk.swipestemp.listeners;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
 public class OnSwipeTouchListener implements View.OnTouchListener {
+
+    private static final String TAG = "OnSwipeTouchListener";
 
     private final GestureDetector gestureDetector;
 
@@ -36,6 +39,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
                 float diffX = e2.getX() - e1.getX();
                 if (Math.abs(diffX) > Math.abs(diffY)) {
                     if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                        Log.d(TAG, "onFling: Horizontal Left | Right");
                         if (diffX > 0) {
                             onSwipeRight();
                         } else {
@@ -45,6 +49,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
                     }
                 }
                 else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+                    Log.d(TAG, "onFling: Vertical Top | Bottom");
                     if (diffY > 0) {
                         onSwipeBottom();
                     } else {
