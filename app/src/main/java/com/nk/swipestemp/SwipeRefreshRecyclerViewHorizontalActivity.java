@@ -215,7 +215,11 @@ public class SwipeRefreshRecyclerViewHorizontalActivity extends AppCompatActivit
             @Override
             public void onRefresh() {
                 Log.d(TAG, "onRefresh: Refresh recyclerView horizontal");
-                refreshData();
+
+                horizontalSwipeToRefresh.setRefreshing(false);
+                onBackPressed();
+
+//                refreshData();
             }
         });
 
